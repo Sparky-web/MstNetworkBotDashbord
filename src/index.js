@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import "./styles.css"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import "./bamburgh/bamburgh.scss"
+import Navbar from "./Navbar";
+import Account from "./Account";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+          <Navbar/>
+          <Switch>
+              <Route exact path="/">
+                  <App/>
+              </Route>
+              <Route path="/:id" children={<Account/>}/>
+          </Switch>
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
